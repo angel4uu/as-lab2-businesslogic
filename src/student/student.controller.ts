@@ -5,6 +5,11 @@ import { StudentService } from './student.service';
 export class StudentController {
   constructor(private studentService: StudentService) {}
 
+  @Get('careers')
+  async getCareers() {
+    return this.studentService.getCareers();
+  }
+
   @Get('count-by-career')
   async getCountByCareer() {
     return this.studentService.getCountByCareer();

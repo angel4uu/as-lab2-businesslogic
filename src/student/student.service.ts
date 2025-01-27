@@ -7,6 +7,22 @@ import { Student } from './student.type';
 export class StudentService {
   constructor(private http: HttpService) {}
 
+  async getCareers() {
+    const query = `
+      SELECT code, name
+      FROM professional_career
+    `;
+    try {
+      const response = await firstValueFrom(
+        this.http.post('http://services:3000/database/query', { query })
+      );
+      return response.data as { career: string; code: number }[];
+    } catch (error) {
+      console.error('Error fetching count by career:', error);
+      throw new Error('Failed to fetch count by career');
+    }
+  }
+
   async getCountByCareer() {
     const query = `
       SELECT professional_career.name as career, COUNT(*) as student_count
