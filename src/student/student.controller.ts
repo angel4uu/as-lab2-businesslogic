@@ -1,7 +1,7 @@
 import { Controller,Get, Query} from '@nestjs/common';
 import { StudentService } from './student.service';
 
-@Controller('students')
+@Controller('student')
 export class StudentController {
   constructor(private studentService: StudentService) {}
 
@@ -11,7 +11,7 @@ export class StudentController {
   }
 
   @Get('main-query')
-  async getFilteredStudents(@Query('careerCode') careerCode: string) {
+  async getMainQuery(@Query('careerCode') careerCode: number) {
     return this.studentService.getMainQuery(careerCode);
   }
 
