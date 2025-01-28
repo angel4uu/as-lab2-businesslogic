@@ -8,7 +8,7 @@ export class CareerService {
 
   async getAllCareers() {
     const query = `
-      SELECT code, name
+      SELECT *
       FROM professional_career
     `;
     try {

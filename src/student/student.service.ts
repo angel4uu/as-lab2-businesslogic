@@ -34,7 +34,7 @@ export class StudentService {
       SELECT *
       FROM student
       WHERE entry_date > '2021-01-01'
-        AND color LIKE '%Red%'
+        AND NOT color LIKE '%Red%'
         AND age BETWEEN 18 AND 25
         AND career_code = $1;
     `;
